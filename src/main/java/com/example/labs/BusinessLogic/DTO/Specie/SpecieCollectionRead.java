@@ -1,7 +1,10 @@
-package com.example.labs.BusinessLogic.DTO;
+package com.example.labs.BusinessLogic.DTO.Specie;
 
+import com.example.labs.BusinessLogic.Enums.Continents;
+import com.example.labs.BusinessLogic.Enums.DietType;
 import lombok.*;
 
+import java.util.List;
 import java.util.UUID;
 
 @Getter
@@ -11,7 +14,7 @@ import java.util.UUID;
 @AllArgsConstructor(access = AccessLevel.PRIVATE)
 @ToString
 @EqualsAndHashCode
-public class AnimalDTO {
+public class SpecieCollectionRead {
     @Getter
     @Setter
     @Builder
@@ -22,8 +25,8 @@ public class AnimalDTO {
     public static class Specie{
         private UUID id;
         private String name;
+        private DietType dietType;
+        private Continents occurring;
     }
-    private UUID id;
-    private int age;
-    private Specie specie;
+    private List<Specie> species;
 }

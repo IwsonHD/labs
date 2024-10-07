@@ -1,4 +1,4 @@
-package com.example.labs.Enums;
+package com.example.labs.BusinessLogic.Enums;
 
 public enum Continents {
     NORTH_AMERICA,

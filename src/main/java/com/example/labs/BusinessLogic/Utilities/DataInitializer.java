@@ -1,11 +1,11 @@
-package com.example.labs.Initialize;
+package com.example.labs.BusinessLogic.Utilities;
 
 import com.example.labs.BusinessLogic.Models.Animal;
 import com.example.labs.BusinessLogic.Models.Specie;
 import com.example.labs.BusinessLogic.Services.AnimalService;
 import com.example.labs.BusinessLogic.Services.SpecieService;
-import com.example.labs.Enums.Continents;
-import com.example.labs.Enums.DietType;
+import com.example.labs.BusinessLogic.Enums.Continents;
+import com.example.labs.BusinessLogic.Enums.DietType;
 
 import jakarta.annotation.PostConstruct;
 import org.springframework.stereotype.Component;
@@ -58,36 +58,42 @@ public class DataInitializer {
                     .id(UUID.randomUUID())
                     .specie(lionSpecie)
                     .age(5)
+                    .weight(190.5f)
                     .build();
 
             Animal lion2 = Animal.builder()
                     .id(UUID.randomUUID())
                     .specie(lionSpecie)
                     .age(6)
+                    .weight(210.0f)
                     .build();
 
             Animal elephant1 = Animal.builder()
                     .id(UUID.randomUUID())
                     .specie(elephantSpecie)
                     .age(10)
+                    .weight(5000.0f)
                     .build();
 
             Animal elephant2 = Animal.builder()
                     .id(UUID.randomUUID())
                     .specie(elephantSpecie)
                     .age(12)
+                    .weight(5200.0f)
                     .build();
 
             Animal zebra1 = Animal.builder()
                     .id(UUID.randomUUID())
                     .specie(zebraSpecie)
                     .age(3)
+                    .weight(300.5f)
                     .build();
 
             Animal zebra2 = Animal.builder()
                     .id(UUID.randomUUID())
                     .specie(zebraSpecie)
                     .age(4)
+                    .weight(320.0f)
                     .build();
 
 

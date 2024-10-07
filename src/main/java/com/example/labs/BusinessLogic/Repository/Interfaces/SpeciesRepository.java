@@ -1,7 +1,7 @@
 package com.example.labs.BusinessLogic.Repository.Interfaces;
 
 import com.example.labs.BusinessLogic.Models.Specie;
-import com.example.labs.Enums.Continents;
+import com.example.labs.BusinessLogic.Enums.Continents;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.List;

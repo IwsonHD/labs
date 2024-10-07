@@ -4,8 +4,8 @@ import com.example.labs.BusinessLogic.Models.Animal;
 import com.example.labs.BusinessLogic.Models.Specie;
 import com.example.labs.BusinessLogic.Services.AnimalService;
 import com.example.labs.BusinessLogic.Services.SpecieService;
-import com.example.labs.Enums.Continents;
-import com.example.labs.Enums.DietType;
+import com.example.labs.BusinessLogic.Enums.Continents;
+import com.example.labs.BusinessLogic.Enums.DietType;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
@@ -112,11 +112,20 @@ public class ApplicationCommandLineRunner implements CommandLineRunner {
                 System.out.println("Invalid age input. Operation aborted.");
                 return;
             }
+            System.out.println("Input animal weight:");
+            float weight;
+            try {
+                weight = Float.parseFloat(scanner.nextLine());
+            } catch (NumberFormatException e) {
+                System.out.println("Invalid weight input. Operation aborted.");
+                return;
+            }
 
             Animal newAnimal = Animal.builder()
                     .id(UUID.randomUUID())
                     .specie(newSpecie)
                     .age(age)
+                    .weight(weight)
                     .build();
 
             animalService.save(newAnimal);

@@ -2,7 +2,7 @@ package com.example.labs.BusinessLogic.Services;
 
 import com.example.labs.BusinessLogic.Repository.Interfaces.SpeciesRepository;
 import com.example.labs.BusinessLogic.Models.Specie;
-import com.example.labs.Enums.Continents;
+import com.example.labs.BusinessLogic.Enums.Continents;
 import org.springframework.stereotype.Service;
 
 import java.util.List;

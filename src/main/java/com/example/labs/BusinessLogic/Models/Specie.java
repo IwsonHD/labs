@@ -1,7 +1,7 @@
 package com.example.labs.BusinessLogic.Models;
 
-import com.example.labs.Enums.Continents;
-import com.example.labs.Enums.DietType;
+import com.example.labs.BusinessLogic.Enums.Continents;
+import com.example.labs.BusinessLogic.Enums.DietType;
 import jakarta.persistence.*;
 import lombok.*;
 

@@ -26,4 +26,7 @@ public class Animal implements Serializable {
 
     @Column(name = "age", nullable = false)
     private Integer age;
+
+    @Column(name = "weight", nullable = false)
+    private float weight;
 }
