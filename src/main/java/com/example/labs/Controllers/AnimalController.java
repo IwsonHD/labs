@@ -100,5 +100,31 @@ public class AnimalController {
         return ResponseEntity.ok(AnimalCollectionRead.builder().animals(animalList).build());
     }
 
+    @PostMapping("/{id}")
+    public ResponseEntity<AnimalRead> updateAnimal(@PathVariable UUID id, @RequestBody AnimalCreateUpdate animalCreateUpdate){
+        return animalService.findById(id)
+                .map(animal -> {
+                    animal.setAge(animalCreateUpdate.getAge());
+                    animal.setWeight(animalCreateUpdate.getWeight());
+                    animalService.save(animal);
+
+                    return ResponseEntity.ok(AnimalRead.builder()
+                            .id(animal.getId())
+                            .age(animal.getAge())
+                            .weight(animal.getWeight())
+                            .specieName(animal.getSpecie().getName()).build());
+                })
+                .orElse(ResponseEntity.status(HttpStatus.NOT_FOUND).build());
+    }
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Void> deleteAnimal(@PathVariable UUID id){
+        if(animalService.findById(id).isPresent()){
+            animalService.deleteById(id);
+            return ResponseEntity.noContent().build();
+        }else{
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
+        }
+    }
 
 }

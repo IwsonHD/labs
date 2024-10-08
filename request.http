@@ -1,0 +1,77 @@
+### Get all animals
+GET http://localhost:8080/api/animals
+Accept: application/json
+
+###
+
+### Get a single animal by ID
+GET http://localhost:8080/api/animals/{animalId}
+Accept: application/json
+
+###
+
+### Create a new animal in a specific specie
+POST http://localhost:8080/api/animals/specie/{specieName}
+Content-Type: application/json
+
+{
+  "age": 3,
+  "weight": 10.5
+}
+
+###
+
+### Update an existing animal
+POST http://localhost:8080/api/animals/{animalId}
+Content-Type: application/json
+
+{
+  "age": 5,
+  "weight": 12.8
+}
+
+###
+
+### Delete an animal by ID
+DELETE http://localhost:8080/api/animals/{animalId}
+
+###
+
+### Get all species
+GET http://localhost:8080/api/species
+Accept: application/json
+
+###
+
+### Get a single specie by ID
+GET http://localhost:8080/api/species/{specieId}
+Accept: application/json
+
+###
+
+### Create a new specie
+POST http://localhost:8080/api/species
+Content-Type: application/json
+
+{
+  "name": "Elephant",
+  "dietType": "HERBIVORE",
+  "occurring": "AFRICA"
+}
+
+###
+
+### Update an existing specie
+POST http://localhost:8080/api/species/{specieId}
+Content-Type: application/json
+
+{
+  "name": "Lion",
+  "dietType": "CARNIVORE",
+  "occurring": "AFRICA"
+}
+
+###
+
+### Delete a specie by ID
+DELETE http://localhost:8080/api/species/{specieId}
