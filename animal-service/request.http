@@ -1,0 +1,36 @@
+### Get all animals
+GET http://localhost:8080/api/animals
+Accept: application/json
+
+---
+
+### Get a single animal by ID
+GET http://localhost:8080/api/animals/{animalId}
+Accept: application/json
+
+---
+
+### Create a new animal
+POST http://localhost:8080/api/animals/specie/{specieId}
+Content-Type: application/json
+
+{
+  "age": 5,
+  "weight": 300.5
+}
+
+---
+
+### Update an existing animal
+POST http://localhost:8080/api/animals/{animalId}
+Content-Type: application/json
+
+{
+  "age": 6,
+  "weight": 320.0
+}
+
+---
+
+### Delete an animal by ID
+DELETE http://localhost:8080/api/animals/{animalId}

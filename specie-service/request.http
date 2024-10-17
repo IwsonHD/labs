@@ -1,0 +1,38 @@
+### Get all species
+GET http://localhost:8080/api/species
+Accept: application/json
+
+###
+
+### Get a single specie by ID
+GET http://localhost:8080/api/species/{specieId}
+Accept: application/json
+
+###
+
+### Create a new specie
+POST http://localhost:8080/api/species
+Content-Type: application/json
+
+{
+  "name": "Elephant",
+  "dietType": "HERBIVORE",
+  "occurring": "AFRICA"
+}
+
+###
+
+### Update an existing specie
+POST http://localhost:8080/api/species/{specieId}
+Content-Type: application/json
+
+{
+  "name": "Lion",
+  "dietType": "CARNIVORE",
+  "occurring": "AFRICA"
+}
+
+###
+
+### Delete a specie by ID
+DELETE http://localhost:8080/api/species/{specieId}
