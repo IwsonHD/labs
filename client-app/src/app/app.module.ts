@@ -1,20 +1,28 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
+import { HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { SpecieListComponent } from './specie-list/specie-list.component';
+import { SpecieListComponent } from './specie/view/specie-list/specie-list.component';
+import { SpecieService } from './specie/service/specie-service.service';
+import { FormsModule } from '@angular/forms';
+import { AddSpecieComponent } from './specie/view/add-specie/add-specie.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    SpecieListComponent
+    SpecieListComponent,
+    AddSpecieComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    HttpClientModule,
+    FormsModule
   ],
-  providers: [],
+  providers: [
+    SpecieService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
