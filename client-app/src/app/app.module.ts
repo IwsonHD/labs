@@ -7,12 +7,14 @@ import { SpecieListComponent } from './specie/view/specie-list/specie-list.compo
 import { SpecieService } from './specie/service/specie-service.service';
 import { FormsModule } from '@angular/forms';
 import { AddSpecieComponent } from './specie/view/add-specie/add-specie.component';
+import { EditSpecieComponent } from './specie/view/edit-specie/edit-specie.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     SpecieListComponent,
-    AddSpecieComponent
+    AddSpecieComponent,
+    EditSpecieComponent
   ],
   imports: [
     BrowserModule,

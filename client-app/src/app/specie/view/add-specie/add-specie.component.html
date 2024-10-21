@@ -1,1 +1,20 @@
-<p>add-specie works!</p>
+<form (ngSubmit)="onSubmit()" #specieForm="ngForm">
+    <div>
+      <label for="name">Nazwa Gatunku:</label>
+      <input type="text" id="name" required [(ngModel)]="specie.name" name="name">
+    </div>
+    <div>
+      <label for="occurring">Kontynent:</label>
+      <select id="occurring" [(ngModel)]="specie.occurring" name="occurring" required>
+        <option *ngFor="let continent of continents" [value]="continent">{{ continent }}</option>
+      </select>
+    </div>
+    <div>
+      <label for="dietType">Typ Diety:</label>
+      <select id="dietType" [(ngModel)]="specie.dietType" name="dietType" required>
+        <option *ngFor="let diet of dietTypes" [value]="diet">{{ diet }}</option>
+      </select>
+    </div>
+    <button type="submit" [disabled]="!specieForm.form.valid">Dodaj Gatunek</button>
+  </form>
+  

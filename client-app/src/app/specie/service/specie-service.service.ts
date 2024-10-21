@@ -23,5 +23,16 @@ export class SpecieService {
     return this.http.delete(`${this.apiUrl}/${id}`);
   }
 
+  addSpecie(specie: Specie): Observable<Specie>{
+    return this.http.post<Specie>(`${this.apiUrl}`, specie);
+  }
+
+  getSpecieById(id: string): Observable<Specie>{
+    return this.http.get<Specie>(`${this.apiUrl}/${id}`);
+  }
+
+  updateSpecie(specie: Specie): Observable<Specie>{ 
+    return this.http.post<Specie>(`${this.apiUrl}/${specie.id}`, specie);
+  }
 
 }

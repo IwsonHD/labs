@@ -1,0 +1,17 @@
+<h2>Edit Specie</h2>
+<form (ngSubmit)="onSubmit()">
+  <label for="name">Name</label>
+  <input type="text" id="name" [(ngModel)]="specie.name" name="name" required>
+
+  <label for="occurring">Continent</label>
+  <select id="occurring" [(ngModel)]="specie.occurring" name="occurring" required>
+    <option *ngFor="let continent of continents" [value]="continent">{{ continent }}</option>
+  </select>
+
+  <label for="dietType">Diet Type</label>
+  <select id="dietType" [(ngModel)]="specie.dietType" name="dietType" required>
+    <option *ngFor="let diet of dietTypes" [value]="diet">{{ diet }}</option>
+  </select>
+
+  <button type="submit">Save Changes</button>
+</form>

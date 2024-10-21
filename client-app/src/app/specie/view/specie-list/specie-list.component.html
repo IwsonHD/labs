@@ -4,5 +4,6 @@
     <li *ngFor="let specie of species">
         {{ specie.name }}
         <button (click)="deleteSpecie(specie.id)">Delete</button>
+        <button [routerLink]="['/species/edit', specie.id]">Edit</button>
     </li>    
 </ul>
