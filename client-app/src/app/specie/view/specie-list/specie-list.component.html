@@ -1,0 +1,8 @@
+<h2>Specie list</h2>
+
+<ul>
+    <li *ngFor="let specie of species">
+        {{ specie.name }}
+        <button (click)="deleteSpecie(specie.id)">Delete</button>
+    </li>    
+</ul>
