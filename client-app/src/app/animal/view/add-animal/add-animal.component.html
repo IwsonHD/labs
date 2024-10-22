@@ -1,0 +1,12 @@
+<h2>Add a New Animal</h2>
+
+<form (ngSubmit)="onSubmit()">
+  
+  <label for="age">Age:</label>
+  <input id="age" type="number" [(ngModel)]="animal.age" name="age" required>
+  
+  <label for="weight">Weight:</label>
+  <input id="weight" type="number" [(ngModel)]="animal.weight" name="weight" required>
+  
+  <button type="submit">Add Animal</button>
+</form>

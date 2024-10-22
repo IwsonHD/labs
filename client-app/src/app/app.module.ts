@@ -8,13 +8,21 @@ import { SpecieService } from './specie/service/specie-service.service';
 import { FormsModule } from '@angular/forms';
 import { AddSpecieComponent } from './specie/view/add-specie/add-specie.component';
 import { EditSpecieComponent } from './specie/view/edit-specie/edit-specie.component';
+import { ViewSpecieComponent } from './specie/view/view-specie/view-specie.component';
+import { AddAnimalComponent } from './animal/view/add-animal/add-animal.component';
+import { EditAnimalComponent } from './animal/view/edit-animal/edit-animal.component';
+import { ViewAnimalComponent } from './animal/view/view-animal/view-animal.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     SpecieListComponent,
     AddSpecieComponent,
-    EditSpecieComponent
+    EditSpecieComponent,
+    ViewSpecieComponent,
+    AddAnimalComponent,
+    EditAnimalComponent,
+    ViewAnimalComponent
   ],
   imports: [
     BrowserModule,

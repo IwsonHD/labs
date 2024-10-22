@@ -1,0 +1,14 @@
+<h2>Specie Details: {{ specie.name }}</h2>
+<p><strong>Continent:</strong> {{ specie.occurring }}</p>
+<p><strong>Diet Type:</strong> {{ specie.dietType }}</p>
+
+<h3>Animals in this Specie</h3>
+<a [routerLink]="['/species', specie.id, 'add-animal']">Add New Animal</a>
+<ul>
+  <li *ngFor="let animal of animals">
+    Animal: {{ animal.id }} 
+    <button [routerLink]="['/species', specie.id, 'animals', animal.id]">Details</button>
+    <button (click)="deleteAnimal(animal.id)">Delete</button>
+    <button [routerLink]="['/species', specie.id, 'edit-animal', animal.id]">Edit</button>
+  </li>
+</ul>
