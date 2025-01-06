@@ -1,6 +1,6 @@
 FROM nginx:1.23.3
 
-ENV API_URL=http://localhost:8080/api
+ENV API_URL=http://gateway-service:8080/api
 
 EXPOSE 80
 
