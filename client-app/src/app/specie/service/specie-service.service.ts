@@ -9,7 +9,7 @@ import { map }  from 'rxjs/operators';
 })
 
 export class SpecieService {
-  private apiUrl = 'http://localhost:8080/api/species';
+  private apiUrl = '/api/species';
   
   constructor(private http: HttpClient) { }
 

@@ -1,0 +1,19 @@
+# Użyj obrazu OpenJDK
+FROM openjdk:17-jdk-slim
+
+ENV RPG_GATEWAY_HOST=localhost:8080
+ENV RPG_CHARACTER_URL=http://localhost:8081
+ENV RPG_PROFESSION_URL=http://localhost:8082
+ENV RPG_USER_URL=http://localhost:8083
+
+
+WORKDIR /app
+
+# Skopiuj plik JAR aplikacji
+COPY target/gateway-service-0.0.1-SNAPSHOT.jar .
+
+# Eksponuj port aplikacji
+EXPOSE 8080
+
+# Uruchom aplikację Spring Boot
+ENTRYPOINT ["java", "-jar", "gateway-service.jar"]
