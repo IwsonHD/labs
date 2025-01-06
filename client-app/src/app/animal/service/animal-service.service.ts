@@ -9,7 +9,7 @@ import { map }  from 'rxjs/operators';
 })
 export class AnimalService {
 
-  private apiUrl = 'http://localhost:8080/api/animals';
+  private apiUrl = '/api/animals';
   
   constructor(private http: HttpClient) { }
 
