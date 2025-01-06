@@ -7,14 +7,11 @@ services:
       context: ./animal-service
       dockerfile: dockerfile
     environment:
-      - SPRING_DATASOURCE_URL=jdbc:h2:mem:testdb
-      - SPRING_DATASOURCE_DRIVERCLASSNAME=org.h2.Driver
-      - SPRING_DATASOURCE_USERNAME=admin
-      - SPRING_DATASOURCE_PASSWORD=password
-      - SPRING_JPA_DATABASE_PLATFORM=org.hibernate.dialect.H2Dialect
-      - SPRING_JPA_GENERATE_DDL=true
+      - SPRING_DATASOURCE_URL=jdbc:postgresql://animal-db:5432/animal-database
+      - SPRING_DATASOURCE_USERNAME=postgres
+      - SPRING_DATASOURCE_PASSWORD=postgres
       - SPRING_JPA_HIBERNATE_DDL_AUTO=update
-      - SPRING_H2_CONSOLE_enabled=true
+      - SPRING_JPA_DATABASE_PLATFORM=org.hibernate.dialect.PostgreSQLDialect
     ports:
       - "8081:8080"
     networks:
@@ -26,14 +23,11 @@ services:
       context: ./specie-service
       dockerfile: dockerfile
     environment:
-      - SPRING_DATASOURCE_URL=jdbc:h2:mem:testdb
-      - SPRING_DATASOURCE_DRIVERCLASSNAME=org.h2.Driver
-      - SPRING_DATASOURCE_USERNAME=admin
-      - SPRING_DATASOURCE_PASSWORD=password
-      - SPRING_JPA_DATABASE_PLATFORM=org.hibernate.dialect.H2Dialect
-      - SPRING_JPA_GENERATE_DDL=true
+      - SPRING_DATASOURCE_URL=jdbc:postgresql://specie-db:5432/specie-database
+      - SPRING_DATASOURCE_USERNAME=postgres
+      - SPRING_DATASOURCE_PASSWORD=postgres
       - SPRING_JPA_HIBERNATE_DDL_AUTO=update
-      - SPRING_H2_CONSOLE_enabled=true
+      - SPRING_JPA_DATABASE_PLATFORM=org.hibernate.dialect.PostgreSQLDialect
     ports:
       - "8082:8080"
     networks:
@@ -72,6 +66,40 @@ services:
       - "80:80"
     networks:
       - app-network
+
+  specie-db:
+    image: postgres:15
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+      - POSTGRES_DB=specie-database
+      - PGDATA=/var/lib/postgresql/data/pgdata
+    volumes:
+      - specie-db-data:/var/lib/postgresql/data
+    container_name: specie-db
+    ports:
+      - "5433:5432"
+    networks:
+      - app-network
+
+  animal-db:
+    image: postgres:15
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+      - POSTGRES_DB=animal-database
+      - PGDATA=/var/lib/postgresql/data/pgdata
+    volumes:
+      - animal-db-data:/var/lib/postgresql/data
+    container_name: animal-db
+    ports:
+      - "5434:5432"
+    networks:
+      - app-network
+
+volumes:
+  specie-db-data:
+  animal-db-data:
 
 networks:
   app-network:
