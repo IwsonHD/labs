@@ -64,7 +64,7 @@ public class DataInitializer {
                 .build();
 
         try {
-            restTemplate.postForEntity("http://localhost:8081/api/animals/species", specieDTO, Void.class);
+            restTemplate.postForEntity("http://gateway-service:8080/api/animals/species", specieDTO, Void.class);
         } catch (Exception e) {
 
             System.err.println("Błąd przy wysyłaniu danych do animal-service: " + e.getMessage());

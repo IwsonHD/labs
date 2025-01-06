@@ -1,0 +1,78 @@
+version: '3'
+
+services:
+  animal-service:
+    image: animal-service:0.0.1-SNAPSHOT
+    build:
+      context: ./animal-service
+      dockerfile: dockerfile
+    environment:
+      - SPRING_DATASOURCE_URL=jdbc:h2:mem:testdb
+      - SPRING_DATASOURCE_DRIVERCLASSNAME=org.h2.Driver
+      - SPRING_DATASOURCE_USERNAME=admin
+      - SPRING_DATASOURCE_PASSWORD=password
+      - SPRING_JPA_DATABASE_PLATFORM=org.hibernate.dialect.H2Dialect
+      - SPRING_JPA_GENERATE_DDL=true
+      - SPRING_JPA_HIBERNATE_DDL_AUTO=update
+      - SPRING_H2_CONSOLE_enabled=true
+    ports:
+      - "8081:8080"
+    networks:
+      - app-network
+
+  specie-service:
+    image: specie-service:0.0.1-SNAPSHOT
+    build:
+      context: ./specie-service
+      dockerfile: dockerfile
+    environment:
+      - SPRING_DATASOURCE_URL=jdbc:h2:mem:testdb
+      - SPRING_DATASOURCE_DRIVERCLASSNAME=org.h2.Driver
+      - SPRING_DATASOURCE_USERNAME=admin
+      - SPRING_DATASOURCE_PASSWORD=password
+      - SPRING_JPA_DATABASE_PLATFORM=org.hibernate.dialect.H2Dialect
+      - SPRING_JPA_GENERATE_DDL=true
+      - SPRING_JPA_HIBERNATE_DDL_AUTO=update
+      - SPRING_H2_CONSOLE_enabled=true
+    ports:
+      - "8082:8080"
+    networks:
+      - app-network
+    depends_on:
+      - animal-service
+      - gateway-service
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://gateway-service:8080/api/animals"]
+      interval: 10s
+      retries: 5
+      start_period: 30s
+      timeout: 5s
+
+  gateway-service:
+    image: gateway-service:0.0.1-SNAPSHOT
+    build:
+      context: ./gateway-service
+      dockerfile: dockerfile
+    environment:
+      - LABS_GATEWAY_HOST=gateway-service:8080
+      - LABS_SPECIESERVICE_URL=http://specie-service:8080
+      - LABS_ANIMALSERVICE_URL=http://animal-service:8080
+    ports:
+      - "8080:8080"
+    networks:
+      - app-network
+
+  client-app:
+    build:
+      context: ./client-app
+      dockerfile: dockerfile
+    environment:
+      - API_URL=http://gateway-service:8080/api
+    ports:
+      - "80:80"
+    networks:
+      - app-network
+
+networks:
+  app-network:
+    driver: bridge

@@ -80,7 +80,7 @@ public class SpecieController {
                 .id(newSpecie.getId())
                 .build();
         try {
-            restTemplate.postForEntity("http://localhost:8081/api/animals/species", specieDTO, Void.class);
+            restTemplate.postForEntity("http://gateway-service:8080/api/animals/species", specieDTO, Void.class);
         } catch (RestClientException e){
             System.err.println(e.getMessage());
         }
@@ -111,7 +111,7 @@ public class SpecieController {
         if(specieService.findById(id).isPresent()){
             specieService.deleteById(id);
             try{
-                restTemplate.delete("http://localhost:8081/api/animals/species/{id}", id);
+                restTemplate.delete("http://gateway-service:8080/api/animals/species/{id}", id);
             } catch (RestClientException e){
                 System.err.println(e.getMessage());
             }
