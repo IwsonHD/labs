@@ -17,6 +17,7 @@ services:
     networks:
       - app-network
 
+
   specie-service:
     image: specie-service:0.0.1-SNAPSHOT
     build:
@@ -35,6 +36,7 @@ services:
     depends_on:
       - animal-service
       - gateway-service
+      - specie-db
     healthcheck:
       test: ["CMD", "curl", "-f", "http://gateway-service:8080/api/animals"]
       interval: 10s
